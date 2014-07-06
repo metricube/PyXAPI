@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: PyXAPI
+Version: 0.1
+Summary: Python Socket Module Extension + Advanced Socket API for IPv6 (RFC 3542)
+Home-page: http://www.pps.jussieu.fr/~ylg/PyXAPI/
+Author: Yves Legrandgerard
+Author-email: ylg@pps.jussieu.fr
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

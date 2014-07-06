@@ -1,0 +1,23 @@
+PYTHON_PROGRAM = @PYTHON_PROGRAM@
+
+all:
+	$(PYTHON_PROGRAM) setup.py build
+test:
+	$(PYTHON_PROGRAM) setup.py install --install-lib Test
+install:
+	$(PYTHON_PROGRAM) setup.py install
+dist:
+	$(PYTHON_PROGRAM) setup.py sdist --force-manifest --dist-dir Dist
+clean:
+	$(PYTHON_PROGRAM) setup.py clean --all
+	find . -name '*.o' -exec rm -f {} ';'
+	find . -name '*.s[ol]' -exec rm -f {} ';'
+	find . -name '*.py[co]' -exec rm -f {} ';'
+	find . -name '*~' -exec rm -f {} ';'
+	find . -name '#*#' -exec rm -f {} ';'
+	find . -name '.#*' -exec rm -f {} ';'
+	find . -name 'core' -exec rm -f {} ';'
+	find . -name '*.core' -exec rm -f {} ';'
+	-rm -rf Makefile config.log config.status configure.lineno \
+		MANIFEST pyxapi.h autom4te.cache Test/socket_ext.py \
+		Test/rfc3542.py Dist

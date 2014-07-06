@@ -1,0 +1,157 @@
+/* pyxapi.h.in.  Generated from configure.ac by autoheader.  */
+
+
+#ifndef PyXAPI_H
+#define PyXAPI_H
+
+
+/* Define to 1 if you have the `if_freenameindex' function. */
+#undef HAVE_IF_FREENAMEINDEX
+
+/* Define to 1 if you have the `if_indextoname' function. */
+#undef HAVE_IF_INDEXTONAME
+
+/* Define to 1 if you have the `if_nameindex' function. */
+#undef HAVE_IF_NAMEINDEX
+
+/* Define to 1 if you have the `if_nametoindex' function. */
+#undef HAVE_IF_NAMETOINDEX
+
+/* Define to 1 if you have the `inet6_opt_append' function. */
+#undef HAVE_INET6_OPT_APPEND
+
+/* Define to 1 if you have the `inet6_opt_find' function. */
+#undef HAVE_INET6_OPT_FIND
+
+/* Define to 1 if you have the `inet6_opt_finish' function. */
+#undef HAVE_INET6_OPT_FINISH
+
+/* Define to 1 if you have the `inet6_opt_get_val' function. */
+#undef HAVE_INET6_OPT_GET_VAL
+
+/* Define to 1 if you have the `inet6_opt_init' function. */
+#undef HAVE_INET6_OPT_INIT
+
+/* Define to 1 if you have the `inet6_opt_next' function. */
+#undef HAVE_INET6_OPT_NEXT
+
+/* Define to 1 if you have the `inet6_opt_set_val' function. */
+#undef HAVE_INET6_OPT_SET_VAL
+
+/* Define to 1 if you have the `inet6_rth_add' function. */
+#undef HAVE_INET6_RTH_ADD
+
+/* Define to 1 if you have the `inet6_rth_getaddr' function. */
+#undef HAVE_INET6_RTH_GETADDR
+
+/* Define to 1 if you have the `inet6_rth_init' function. */
+#undef HAVE_INET6_RTH_INIT
+
+/* Define to 1 if you have the `inet6_rth_reverse' function. */
+#undef HAVE_INET6_RTH_REVERSE
+
+/* Define to 1 if you have the `inet6_rth_segments' function. */
+#undef HAVE_INET6_RTH_SEGMENTS
+
+/* Define to 1 if you have the `inet6_rth_space' function. */
+#undef HAVE_INET6_RTH_SPACE
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the type struct icmp6_filter */
+#undef HAVE_STRUCT_ICMP6_FILTER
+
+/* Define to 1 if you have the type struct if_nameindex */
+#undef HAVE_STRUCT_IF_NAMEINDEX
+
+/* Define to 1 if you have the type struct in6_pktinfo */
+#undef HAVE_STRUCT_IN6_PKTINFO
+
+/* Define to 1 if you have the type struct ip6_mtuinfo */
+#undef HAVE_STRUCT_IP6_MTUINFO
+
+/* Define to 1 if you have the type struct ip6_opt */
+#undef HAVE_STRUCT_IP6_OPT
+
+/* Define to 1 if you have the type struct ip6_rthdr */
+#undef HAVE_STRUCT_IP6_RTHDR
+
+/* Define to 1 if you have the type struct ip6_rthdr0 */
+#undef HAVE_STRUCT_IP6_RTHDR0
+
+/* Define to 1 if you are using Solaris */
+#undef HAVE_SUNOS
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the POSIX type uint32_t */
+#undef HAVE_UINT32_T
+
+/* Define to 1 if you have the POSIX type uint8_t */
+#undef HAVE_UINT8_T
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define to 1 if your processor stores words with the most significant byte
+   first (like Motorola and SPARC, unlike Intel and VAX). */
+#undef WORDS_BIGENDIAN
+
+/* Define to 1 if on AIX 3.
+   System headers sometimes define this.
+   We just want to avoid a redefinition error message.  */
+#ifndef _ALL_SOURCE
+# undef _ALL_SOURCE
+#endif
+
+/* Define to 1 if on MINIX. */
+#undef _MINIX
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+#undef _POSIX_1_SOURCE
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+#undef _POSIX_SOURCE
+
+
+#endif /*PyXAPI_H*/
+

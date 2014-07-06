@@ -1,0 +1,67 @@
+This is PyXAPI version 0.1
+==========================
+
+Requirements
+------------
+
+  1. You need Python-2.3.3 or newer installed on your system.
+
+  2. Python must have been compiled with socket module.
+
+  3. If you want to compile module `_rfc3542.c' (see REAME.txt for
+     full description of PyXAPI package), you must have Python
+     socket module compiled with IPv6 support.
+
+Basic Installation
+------------------
+
+  To build PyXAPI modules:
+
+  1. `cd' to the toplevel directory of the package and run the script
+     `./configure' to configure the package for your system. The
+     `configure' shell script attempts to guess correct values for
+     various system-dependent variables used during compilation. It
+     uses those values to create a `Makefile'. It also create files
+     `pyxapi.h' and `setup.py'.
+
+  2. Type `make' in the toplevel directory to compile the package.
+
+  3. Optionally, type `make test' and `cd' to the `Test' directory.
+     You will find some examples you can test after reading their
+     description in file `README.txt'
+
+  4. As `root', type `make install'. Modules `socket_ext.py',
+     `_socket_ext.so', `rfc3542.py' and `_rfc3542.so' will be copied
+     in the proper directory of your Python installation (for example,
+     `/usr/local/lib/python2.3/site-packages').
+
+  5. Optionally, you can type `make clean' to save disk space.
+
+Options
+-------
+
+  If you want to compile only the module `_socket_ext.c' (see REAME.txt
+full description of PyXAPI package), you have to run the script
+`./configure' with the option `--disable-ipv6'. In that case, you don't
+need have Python socket module compiled with IPv6 support.
+  Default option is `--enable-ipv6'.
+
+Platform specific notes
+-----------------------
+
+  PyXAPI package has been only tested on Linux and FreeBSD platforms.
+It should also work on NetBSD and Solaris platforms (for Solaris versions
+prior to 9, missing macros `CMSG_SPACE' and CMSG_LEN are provided).
+
+Linux platforms: Linux-2.4.21 and Linux-2.4.27 have the following bug:
+  `sendmsg' crash when sending a UDP datagram with a routing header of
+  type 0 (IPV6_RTHDR_TYPE_0) as ancillary data. More precisely, `sendmsg'
+  is interrupted on receiving SIG_SEGV (segment violation).
+  This bug concerns ONLY UDP protocol. More precisely, if you send, for
+  example, an ICMPv6 Echo Request with  a routing header of type 0 as
+  ancillary data, everything works properly.
+  There is only a problem with routing header. All other ancillary data,
+  `hoplimit', `pktinfo', `nexthop', etc. are working fine.
+  This bug affects Linux versions 2.4.21 and 2.4.27 and DOES NOT affect
+  Linux 2.4.20, Linux 2.4.28 and Linux 2.6.xx. I didn't try Linux versions
+  from 2.4.22 to 2.4.26.

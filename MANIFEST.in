@@ -1,0 +1,3 @@
+include configure configure.ac aclocal.m4 *.in COPYING README.txt INSTALL.txt
+recursive-include Include *.h
+recursive-include Test *.py README.txt
