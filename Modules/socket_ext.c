@@ -60,7 +60,8 @@ typedef struct {
  * GLOBAL VARIABLES
  *****************************************************************************/
 
-static PyObject *PySocketExt_Error;
+static PyObject *PySocketExt_Error;  // ext related errors
+static PyObject *PySocket_Error;   // standard socket errors
 static PyTypeObject PyCMSG_Type;
 
 /*****************************************************************************
@@ -377,7 +378,8 @@ PySocketExt_recvmsg(PyObject *self, PyObject *args)
     noc = recvmsg(sock->sock_fd, &msg, flags);
     Py_END_ALLOW_THREADS
     if (noc < 0) {
-	sock->errorhandler();
+	PyErr_SetFromErrno(PySocket_Error);
+	//    sock->errorhandler();  // segfault
 	goto fail;
     }
     if ((addr = setsockaddr((struct sockaddr *) msg.msg_name)) == NULL)
@@ -545,7 +547,8 @@ PySocketExt_sendmsg(PyObject *self, PyObject *args)
     noc = sendmsg(sock->sock_fd, &msg, flags);
     Py_END_ALLOW_THREADS
     if (noc < 0) {
-	sock->errorhandler();
+	PyErr_SetFromErrno(PySocket_Error);
+	//    sock->errorhandler();  // segfault
 	goto fail;
     }
     ret = PyInt_FromLong((long) noc);
@@ -732,12 +735,23 @@ init_socket_ext(void)
     d = PyModule_GetDict(m);
     if (PySocketModule_ImportModuleAndAPI())
 	return;
+
+    // socket_ext errors
     PySocketExt_Error = PyErr_NewException("socket.exterror", NULL, NULL);
     if (PySocketExt_Error == NULL)
 	return;
     Py_INCREF(PySocketExt_Error);
     if (PyModule_AddObject(m, "exterror", PySocketExt_Error) != 0)
 	return;
+
+    // regular socket errors
+    PySocket_Error = PyErr_NewException("socket.error", NULL, NULL);
+    if (PySocket_Error == NULL)
+	return;
+    Py_INCREF(PySocket_Error);
+    if (PyModule_AddObject(m, "error", PySocket_Error) != 0)
+	return;
+
     Py_INCREF((PyObject *) &PyCMSG_Type);
     if (PyModule_AddObject(m, "CMSGType", (PyObject *) &PyCMSG_Type) != 0)
 	return;
@@ -785,7 +799,7 @@ getsockaddr(unsigned char family, PyObject *addro, struct sockaddr **sa,
         sin->sin_len = sizeof(*sin);
 #endif
         sin->sin_family = family;
-        sin->sin_port = port;
+        sin->sin_port = htons(port);
         *sa = (struct sockaddr *) sin;
         *salen = sizeof(*sin);
         break;
