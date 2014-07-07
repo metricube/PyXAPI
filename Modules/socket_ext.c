@@ -60,8 +60,7 @@ typedef struct {
  * GLOBAL VARIABLES
  *****************************************************************************/
 
-static PyObject *PySocketExt_Error;  // ext related errors
-static PyObject *PySocket_Error;   // standard socket errors
+static PyObject *PySocketExt_Error;
 static PyTypeObject PyCMSG_Type;
 
 /*****************************************************************************
@@ -378,7 +377,7 @@ PySocketExt_recvmsg(PyObject *self, PyObject *args)
     noc = recvmsg(sock->sock_fd, &msg, flags);
     Py_END_ALLOW_THREADS
     if (noc < 0) {
-	PyErr_SetFromErrno(PySocket_Error);
+    PyErr_SetFromErrno(PySocketExt_Error);
 	//    sock->errorhandler();  // segfault
 	goto fail;
     }
@@ -547,7 +546,7 @@ PySocketExt_sendmsg(PyObject *self, PyObject *args)
     noc = sendmsg(sock->sock_fd, &msg, flags);
     Py_END_ALLOW_THREADS
     if (noc < 0) {
-	PyErr_SetFromErrno(PySocket_Error);
+	PyErr_SetFromErrno(PySocketExt_Error);
 	//    sock->errorhandler();  // segfault
 	goto fail;
     }
@@ -736,20 +735,13 @@ init_socket_ext(void)
     if (PySocketModule_ImportModuleAndAPI())
 	return;
 
-    // socket_ext errors
-    PySocketExt_Error = PyErr_NewException("socket.exterror", NULL, NULL);
+    // socket_ext errors - ensure it extends from socket.error
+    PySocketExt_Error = PyErr_NewException("socket.exterror", 
+                                            PySocketModule.error, NULL);
     if (PySocketExt_Error == NULL)
 	return;
     Py_INCREF(PySocketExt_Error);
     if (PyModule_AddObject(m, "exterror", PySocketExt_Error) != 0)
-	return;
-
-    // regular socket errors
-    PySocket_Error = PyErr_NewException("socket.error", NULL, NULL);
-    if (PySocket_Error == NULL)
-	return;
-    Py_INCREF(PySocket_Error);
-    if (PyModule_AddObject(m, "error", PySocket_Error) != 0)
 	return;
 
     Py_INCREF((PyObject *) &PyCMSG_Type);

@@ -143,7 +143,8 @@ typedef struct {
 
 /* C API for usage by other Python modules */
 typedef struct {
-	PyTypeObject *Sock_Type;
+    PyTypeObject *Sock_Type;
+    PyObject *error;
 } PySocketModule_APIObject;
 
 /* XXX The net effect of the following appears to be to define a function
