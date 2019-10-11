@@ -8,7 +8,7 @@ Requirements
 
   2. Python must have been compiled with socket module.
 
-  3. If you want to compile module `_rfc3542.c' (see REAME.txt for
+  3. If you want to compile module `_rfc3542.c' (see README.txt for
      full description of PyXAPI package), you must have Python
      socket module compiled with IPv6 support.
 
@@ -40,7 +40,7 @@ Basic Installation
 Options
 -------
 
-  If you want to compile only the module `_socket_ext.c' (see REAME.txt
+  If you want to compile only the module `_socket_ext.c' (see README.txt
 full description of PyXAPI package), you have to run the script
 `./configure' with the option `--disable-ipv6'. In that case, you don't
 need have Python socket module compiled with IPv6 support.
